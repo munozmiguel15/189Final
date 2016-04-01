@@ -33,4 +33,4 @@ Results = Boruta(Data,factor(Base$target),
                  maxRuns=101,
                  doTrace=0)
 Stats = attStats(Results)
-borPlot = plot(normHits~meanImp,col=Stats$decision,data=Stats)
+borPlot = plot(main = "Importance of Variables",normHits~meanImp,col=Stats$decision,data=Stats)
