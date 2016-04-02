@@ -60,7 +60,6 @@ exp(coef(model)) ##exponentiated coefficients
 
 confint(model)##CIs
 
-
 ##testing the significance of the model 
 with(model, null.deviance - deviance)
 with(model, df.null - df.residual)                            
