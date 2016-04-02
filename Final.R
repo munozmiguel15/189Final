@@ -73,3 +73,51 @@ with(model, pchisq(null.deviance - deviance, df.null - df.residual, lower.tail =
 ##
 ##
 
+test = read.csv("test.csv", header = TRUE)
+train = read.csv("train.csv", header = TRUE)
+cleantrain = train[complete.cases(train),]
+cleantest = test[complete.cases(test),]
+v3<-levels(cleantrain$v3) <- c(1:4)
+v22<-levels(cleantrain$v22) <- c(1:118211)
+v24<-levels(cleantrain$v24) <- c(1:5)
+v30<-levels(cleantrain$v30) <- c(1:8)
+v31<-levels(cleantrain$v31) <- c(1:4)
+v47<-levels(cleantrain$v47) <- c(1:10)
+v52<-levels(cleantrain$v52) <- c(1:13)
+v56<-levels(cleantrain$v56) <- c(1:123)
+v66<-levels(cleantrain$v66) <- c(1:3)
+v71<-levels(cleantrain$v71) <- c(1:9)
+v74<-levels(cleantrain$v74) <- c(1:3)
+v75<-levels(cleantrain$v75) <- c(1:4)
+v79<-levels(cleantrain$v79) <- c(1:18)
+v91<-levels(cleantrain$v91) <- c(1:8)
+v107<-levels(cleantrain$v107) <- c(1:8)
+v110<-levels(cleantrain$v110) <- c(1:3)
+v112<-levels(cleantrain$v112) <- c(1:23)
+v113<-levels(cleantrain$v113) <- c(1:37)
+v125<-levels(cleantrain$v125) <- c(1:92)
+sampletrain = cleantrain[sample(nrow(cleantrain), 500), ]
+sampletrain = sampletrain[-1]
+sampletest = cleantrain[sample(nrow(cleantrain), 500), ]
+sampletest = sampletest[-1]
+classifiertest = sampletest[-2:-length(sampletest)]
+classifier = sampletrain[-2:-length(sampletrain)]
+sampletrain = sampletrain[-1]
+sampletest = sampletest[-1]
+classifier = unlist(classifier)
+classifiertest = unlist(classifiertest)
+samplematrix <- matrix(as.matrix(sampletrain), ncol = ncol(sampletrain), dimnames = NULL)
+sampletestmatrix <- matrix(as.matrix(sampletest), ncol = ncol(sampletest), dimnames = NULL)
+write.csv(samplematrix, file = "samplematrix.csv")
+write.csv(sampletestmatrix, file = "sampletest.csv")
+write.csv(classifier, file = "classifier.csv")
+write.csv(classifier, file = "classifiertest.csv")
+
+
+##
+##
+##
+##
+##
+
+
